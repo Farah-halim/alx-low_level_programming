@@ -1,18 +1,16 @@
 #include <stdio.h>
+
 /**
  * main - Entry point
  * Description: print number 0 to 9
  * Return: 0 (success)
  */
-
-int main (void)
+int main(void)
 {
-	int x;
-	for (x=1 ; x<=10 ;x++ )
-		putchar(x + 48 );
-	putchar ("\n");
+	int num;
+
+	for (num = 48; num <= 57; num++)
+		putchar((char)num);
+	putchar('\n');
 	return (0);
-	
-
-
 }
