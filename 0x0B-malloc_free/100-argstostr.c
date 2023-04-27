@@ -1,42 +1,41 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+
 /**
- * argstostr - main entry
- * @ac: int input
- * @av: double pointer array
- * Return: 0
+ * argstostr - converts array of strings to one string with newline separators
+ *
+ * @ac: number of strings
+ * @av: array of strings
+ *
+ * Return: char * to concatenated string
  */
 char *argstostr(int ac, char **av)
 {
-	int i, n, k = 0, len = 0;
-	char *str;
+	int size = 0, i;
+	char *ptr, *ret, *retptr;
 
-	if (ac == 0 || av == NULL)
+	if (ac == 0 || !av)
 		return (NULL);
 
 	for (i = 0; i < ac; i++)
 	{
-		for (n = 0; av[i][n]; n++)
-			len++;
+		ptr = av[i];
+		while (*ptr++)
+			size++;
 	}
-	len += ac;
 
-	str = malloc(sizeof(char) * len + 1);
-	if (str == NULL)
+	ret = malloc(size + 1 + ac);
+	if (!ret)
 		return (NULL);
 
+	retptr = ret;
 	for (i = 0; i < ac; i++)
 	{
-		for (n = 0; av[i][n]; n++)
+		for (ptr = av[i]; *ptr; ptr++, retptr++)
 		{
-			str[k] = av[i][n];
-			k++;
+			*retptr = *ptr;
 		}
-		if (str[k] == '\0')
-		{
-			str[k++] = '\n';
-		}
+		*retptr++ = '\n';
 	}
-	return (str);
+
+	return (ret);
 }
