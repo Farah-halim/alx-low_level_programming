@@ -1,1 +1,1 @@
- 0x09-ststic library
+0x09-static_libraries
