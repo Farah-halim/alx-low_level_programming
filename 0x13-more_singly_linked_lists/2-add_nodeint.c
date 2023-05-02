@@ -9,11 +9,11 @@
  * NULL if it failed
  *
  */
-listint_t *add_node (listint_t **head, const int n)
+listint_t *add_node(listint_t **head, const int n)
 {
 	listint_t *node;
 
-	node = malloc(sizeof (listint_t));
+	node = malloc(sizeof(listint_t));
 	if (!node)
 		return (NULL);
 	node->n = n;
