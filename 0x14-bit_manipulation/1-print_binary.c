@@ -5,21 +5,24 @@
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int current;
-	int i, count = 0;
+	int x = 0;
+	unsigned long int num_ber = 1;
+	
+	num_ber <<= 63;
+	if (n == 0)
+		_putchar('0');
 
-	for (i = 63; i >= 0; i--)
+	while (num_ber > 0)
 	{
-		current = n >> i;
+		if ((n & num_ber) == 0 && x == 1)
+			_putchar('0');
 
-		if (current & 1)
+		if ((n & num_ber) != 0)
 		{
 			_putchar('1');
-			count++;
+			x = 1;
 		}
-		else if (count)
-			_putchar('0');
+
+		num_ber = num_ber >> 1;
 	}
-	if (!count)
-		_putchar('0');
 }
