@@ -2,32 +2,32 @@
 #include <string.h>
 /**
  * create_file - creates a file
- *
- * @filename: name
- * @text_content: what is writen
- *
- * Return: 1 and -1 if its fails
+ * @filename: pointer file name
+ * @text_content: what is writen in our file
+ * Return: (1) and (-1) if its fails/errors
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fh;
-	ssize_t wr;
-	ssize_t n;
+	int fp;
+	ssize_t wr, n;
 
-	if (!filename)
+	if (filename == NULL)
 		return (-1);
-	fh = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
-	if (fh == -1)
+
+	fp = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	if (fp == -1)
 		return (-1);
+
 	if (!text_content)
 		text_content = "";
+
 	n = strlen(text_content);
-	wr = write(fh, text_content, n);
+	wr = write(fp, text_content, n);
 	if (wr == -1)
 	{
-		close(fh);
+		close(fp);
 		return (-1);
 	}
-	close(fh);
+	close(fp);
 	return (1);
 }
