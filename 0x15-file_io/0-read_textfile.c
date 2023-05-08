@@ -22,7 +22,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buffer == NULL)
 		return (0);
 
-	re= read(ox, buffer, letters);
+	re = read(ox, buffer, letters);
 	if (re == -1)
 		return (0);
 
